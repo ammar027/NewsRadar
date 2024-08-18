@@ -18,18 +18,18 @@ class News extends Component {
   }
 
   async componentDidUpdate(prevProps) {
-    if (prevProps.category !== this.props.category) {
+    if (prevProps.category !== this.props.category || prevProps.country !== this.props.country) {
       this.setState({ page: 1 }, () => this.updateNews());
     }
   }
 
   async updateNews() {
     const { page } = this.state;
-    const { pageSize, category } = this.props;
+    const { pageSize, category, country } = this.props;
     this.setState({ loading: true });
 
     try {
-      let url = `https://content.guardianapis.com/search?q=${encodeURIComponent('India')}&section=${encodeURIComponent(category || 'technology')}&api-key=fc1bcc18-1f19-47e4-84ff-1aa40910d98b&page=${page}&page-size=${pageSize}&show-fields=thumbnail,trailText`;
+      let url = `https://content.guardianapis.com/search?q=${encodeURIComponent(country)}&section=${encodeURIComponent(category || 'technology')}&api-key=fc1bcc18-1f19-47e4-84ff-1aa40910d98b&page=${page}&page-size=${pageSize}&show-fields=thumbnail,trailText`;
       let response = await fetch(url);
       let parsedData = await response.json();
 

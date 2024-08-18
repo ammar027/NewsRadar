@@ -82,3 +82,22 @@ button:disabled {
   background-color: #bbb;
   cursor: not-allowed;
 }
+
+/* App.css or any CSS file used for styling */
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.form-select {
+  background-color: #343a40; /* Dark background for consistency with navbar */
+  color: #fff; /* White text for better contrast */
+  border: 1px solid #495057; /* Slightly lighter border color */
+  text-align: end;
+}
+
+.form-select:focus {
+  border-color: #007bff; /* Blue border on focus for better visibility */
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25); /* Subtle blue shadow */
+}
+

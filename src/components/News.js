@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import NewsItem from "./NewsItem";
+import React, { Component } from 'react';
+import Spinner from './Spinner';
+import NewsItem from './NewsItem';
 
-export class News extends Component {
-  constructor() {
-    super();
+class News extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       articles: [],
       loading: false,
       page: 1,
       totalResults: 0,
-      error: null,
     };
   }
 
@@ -17,30 +17,30 @@ export class News extends Component {
     this.updateNews();
   }
 
+  async componentDidUpdate(prevProps) {
+    if (prevProps.category !== this.props.category) {
+      this.setState({ page: 1 }, () => this.updateNews());
+    }
+  }
+
   async updateNews() {
     const { page } = this.state;
-    this.setState({ loading: true, error: null });
+    const { pageSize, category } = this.props;
+    this.setState({ loading: true });
 
     try {
-      let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=b27ebcb963a348a389dd714443cec497
-      &page=${page}&pageSize=18`;
+      let url = `https://content.guardianapis.com/search?q=${encodeURIComponent('India')}&section=${encodeURIComponent(category || 'technology')}&api-key=fc1bcc18-1f19-47e4-84ff-1aa40910d98b&page=${page}&page-size=${pageSize}&show-fields=thumbnail,trailText`;
       let response = await fetch(url);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
       let parsedData = await response.json();
 
       this.setState({
-        articles: parsedData.articles,
+        articles: parsedData.response.results,
         loading: false,
-        totalResults: parsedData.totalResults,
+        totalResults: parsedData.response.total,
       });
-
     } catch (error) {
       console.error("Error fetching news:", error);
-      this.setState({ loading: false, error: error.message });
+      this.setState({ loading: false });
     }
   }
 
@@ -52,8 +52,9 @@ export class News extends Component {
   };
 
   handleNextClick = () => {
-    const totalPages = Math.ceil(this.state.totalResults / 18);
-    
+    const { pageSize } = this.props;
+    const totalPages = Math.ceil(this.state.totalResults / pageSize);
+
     if (this.state.page < totalPages) {
       this.setState(
         (state) => ({ page: Math.min(state.page + 1, totalPages) }),
@@ -63,27 +64,25 @@ export class News extends Component {
   };
 
   render() {
-    const totalPages = Math.ceil(this.state.totalResults / 18);
-    const { page, loading, articles, error } = this.state;
+    const { pageSize } = this.props;
+    const totalPages = Math.ceil(this.state.totalResults / pageSize);
+    const { page, loading, articles } = this.state;
 
     return (
-      <div className="container my-5">
-        <h1 className="d-flex justify-content-center my-5">
-          NewsMonkey - Top Headlines
-        </h1>
-        {loading && <h2>Loading...</h2>}
-        {error && <h2>{error}</h2>}
-        <div className="row my-5">
+      <div className="container my-4">
+        <h2 className="text-center">NewsMonkey</h2>
+        <h3 className="text-center">Top Headlines</h3>
+
+        {loading && <Spinner />}
+        <div className="row my-3 mx-2">
           {!loading &&
             articles.map((element) => (
-              <div className="col-md-4" key={element.url}>
+              <div className="col-md-4 news-item" key={element.id}>
                 <NewsItem
-                  title={element.title ? element.title.slice(0, 45) : ""}
-                  description={
-                    element.description ? element.description.slice(0, 88) : ""
-                  }
-                  imageUrl={element.urlToImage || "https://via.placeholder.com/150"}
-                  newsUrl={element.url}
+                  title={element.webTitle ? element.webTitle.slice(0, 56) : ""}
+                  description={element.fields.trailText ? element.fields.trailText.slice(0, 78) : ""}
+                  imageUrl={element.fields.thumbnail || "https://via.placeholder.com/150"}
+                  newsUrl={element.webUrl}
                 />
               </div>
             ))}
@@ -92,7 +91,6 @@ export class News extends Component {
           <button
             disabled={page <= 1}
             type="button"
-            className="btn btn-dark mx-2"
             onClick={this.handlePrevClick}
           >
             &larr; Previous
@@ -100,7 +98,6 @@ export class News extends Component {
           <button
             disabled={page >= totalPages}
             type="button"
-            className="btn btn-dark mx-2"
             onClick={this.handleNextClick}
           >
             Next &rarr;

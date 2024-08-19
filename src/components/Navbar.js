@@ -3,14 +3,14 @@ import { NavLink } from 'react-router-dom';
 
 export class Navbar extends Component {
   render() {
-    const categories = ['sport' ,'technology', 'business', 'science', 'culture' , 'lifestyle'];
+    const categories = ['sport', 'technology', 'business', 'science', 'culture', 'lifestyle'];
     const { selectedCountry, onCountryChange } = this.props;
 
     return (
       <div>
-        <nav className="navbar  navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
-            <a className="nvbr navbar-brand mx-3" href="/">NewsMonkey</a>
+            <NavLink className="nvbr navbar-brand mx-3" to="/">NewsMonkey</NavLink>
             <button
               className="navbar-toggler"
               type="button"
@@ -24,9 +24,9 @@ export class Navbar extends Component {
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                {/* <li className="nav-item">
+                <li className="nav-item">
                   <NavLink className="nav-link" exact to="/">Home</NavLink>
-                </li> */}
+                </li>
                 {categories.map(category => (
                   <li className="nav-item" key={category}>
                     <NavLink
@@ -43,7 +43,7 @@ export class Navbar extends Component {
                 </li>
               </ul>
               <select
-                className="form-select bg-dark text-white border-0 ms-auto"
+                className="form-select bg-light text-black border-0 ms-auto"
                 onChange={(e) => onCountryChange(e.target.value)}
                 value={selectedCountry}
                 style={{ width: "180px" }}

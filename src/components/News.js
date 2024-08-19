@@ -64,14 +64,18 @@ class News extends Component {
   };
 
   render() {
-    const { pageSize } = this.props;
+    const { pageSize, category } = this.props;
     const totalPages = Math.ceil(this.state.totalResults / pageSize);
     const { page, loading, articles } = this.state;
+
+    // Determine the title based on the selected category
+    const categoryTitle = category.charAt(0).toUpperCase() + category.slice(1);
+    const dynamicTitle = `Top ${categoryTitle} Headlines`;
 
     return (
       <div className="container my-4">
         <h2 className="text-center">NewsMonkey</h2>
-        <h3 className="text-center">Top Headlines</h3>
+        <h3 className="text-center">{dynamicTitle}</h3>
 
         {loading && <Spinner />}
         <div className="row my-3 mx-2">
@@ -79,8 +83,8 @@ class News extends Component {
             articles.map((element) => (
               <div className="col-md-4 news-item" key={element.id}>
                 <NewsItem
-                  title={element.webTitle ? element.webTitle.slice(0, 56) : ""}
-                  description={element.fields.trailText ? element.fields.trailText.slice(0, 78) : ""}
+                  title={element.webTitle ? element.webTitle.slice(0, 50) : ""}
+                  description={element.fields.trailText ? element.fields.trailText.slice(0, 68) : ""}
                   imageUrl={element.fields.thumbnail || "https://via.placeholder.com/150"}
                   newsUrl={element.webUrl}
                 />

@@ -8,7 +8,7 @@ body {
 
 .nvbr {
   font-family: 'Open Sans', serif;
-  font-weight: 500;
+  font-weight: 800;
 }
 
 h2 {
@@ -85,9 +85,9 @@ button:disabled {
 
 /* App.css or any CSS file used for styling */
 
-.navbar {
+/* .navbar {
   margin-bottom: 20px;
-}
+} */
 
 .form-select {
   background-color: #343a40; /* Dark background for consistency with navbar */
@@ -101,3 +101,35 @@ button:disabled {
   box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25); /* Subtle blue shadow */
 }
 
+.btn {
+  border-radius: 0%;
+}
+
+/* About.css */
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.about-title {
+  font-family: 'Open Sans', serif;
+  font-weight: 700;
+  font-size: 2em;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about-description {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1.2em;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}

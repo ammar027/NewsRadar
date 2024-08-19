@@ -10,7 +10,7 @@ export class Navbar extends Component {
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
-            <NavLink className="nvbr navbar-brand mx-3" to="/">NewsMonkey</NavLink>
+            <NavLink className="nvbr navbar-brand mx-3" to="/">NM</NavLink>
             <button
               className="navbar-toggler"
               type="button"

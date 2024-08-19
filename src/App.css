@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open Sans:wght@700&family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open Sans:wght@400;700&display=swap');
 
 body {
   font-family: 'Open Sans', serif;
@@ -25,22 +25,17 @@ h2.newsitm {
   font-family: 'Open Sans', serif;
   font-weight: 400;
   font-size: 1em;
-  /* margin-bottom: 20px; */
   text-align: left;
   color: #333;
 }
 
-
 h3 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', serif;
   font-weight: 300;
   font-size: 1.5em;
-  /* margin-bottom: 20px; */
   text-align: center;
   color: #7e7e7e;
 }
-
-
 
 .news-item {
   background-color: #fff;
@@ -49,7 +44,6 @@ h3 {
   margin-bottom: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
 
 .news-item img {
   max-width: 100%;
@@ -61,16 +55,16 @@ h3 {
   font-family: 'Open Sans', serif;
   font-size: 1.5em;
   margin-bottom: 10px;
-  color: #111;
+  color: #000;
 }
 
 .news-item p {
   font-size: 1em;
-  color: #939393;
+  color: #555;
 }
 
 button {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', serif;
   font-size: 1em;
   padding: 10px 20px;
   color: #fff;
@@ -85,29 +79,22 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* App.css or any CSS file used for styling */
-
-/* .navbar {
-  margin-bottom: 20px;
-} */
-
 .form-select {
-  background-color: #343a40; /* Dark background for consistency with navbar */
-  color: #fff; /* White text for better contrast */
-  border: 1px solid #495057; /* Slightly lighter border color */
+  background-color: #343a40;
+  color: #fff;
+  border: 1px solid #495057;
   text-align: end;
 }
 
 .form-select:focus {
-  border-color: #007bff; /* Blue border on focus for better visibility */
-  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25); /* Subtle blue shadow */
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
 }
 
 .btn {
   border-radius: 0%;
 }
 
-/* About.css */
 .about-container {
   max-width: 800px;
   margin: 0 auto;
@@ -128,7 +115,7 @@ button:disabled {
 }
 
 .about-description {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', serif;
   font-weight: 400;
   font-size: 1.2em;
   color: #555;
@@ -136,15 +123,13 @@ button:disabled {
   margin-bottom: 20px;
 }
 
-/* Home.css */
 .home-container {
   padding: 20px;
 }
 
 .hero-section {
-  text-align: center;
+  text-align: start;
   padding: 60px 20px;
-  background: #f7f7f7;
   border-bottom: 1px solid #e5e5e5;
   margin-bottom: 40px;
 }
@@ -180,22 +165,26 @@ button:disabled {
 }
 
 .categories-section {
-  text-align: center;
+
 }
 
 .categories-title {
-  font-family: 'Open Sans', serif;
-  font-weight: 700;
-  font-size: 2em;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  font-size: 1em;
   margin-bottom: 20px;
   color: #000;
 }
 
 .categories-grid {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 20px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .news-item {
@@ -229,7 +218,6 @@ button:disabled {
   cursor: not-allowed;
 }
 
-
 .navbar {
   background-color: #fff;
   border-bottom: 1px solid #e5e5e5;
@@ -243,25 +231,65 @@ button:disabled {
   color: #000;
 }
 
-/* .nav-link {
+.navbar-nav .nav-link {
   font-family: 'Open Sans', serif;
   font-weight: 400;
   font-size: 1em;
-  color: #000;
-} */
-
-.nav-link:hover {
   color: #555;
 }
 
-.form-select {
-  background-color: #fff;
+.navbar-nav .nav-link:hover {
   color: #000;
-  border: 1px solid #ddd;
-  font-family: 'Open Sans', serif;
 }
 
-.form-select:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+
+.current-info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.current-info {
+  font-family: 'Open Sans', serif;
+  font-size: 1em;
+  color: #000;
+  text-align: left;
+}
+
+.stock-info {
+  font-family: 'Open Sans', serif;
+  font-size: 1em;
+  color: #000;
+  text-align: right;
+}
+
+.stock-info h3 {
+  font-family: 'Open Sans', serif;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.stock-info p {
+  font-family: 'Open Sans', serif;
+  font-weight: 400;
+  color: #555;
+}
+
+.stock-info .name {
+  font-family: 'Open Sans', serif;
+  font-weight: 400;
+  color: #000000;
+}
+
+@media (max-width: 768px) {
+  .current-info-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stock-info {
+    text-align: left;
+  }
 }

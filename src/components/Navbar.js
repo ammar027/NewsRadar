@@ -3,14 +3,14 @@ import { NavLink } from 'react-router-dom';
 
 export class Navbar extends Component {
   render() {
-    const categories = ['sport', 'technology', 'business', 'science', 'culture', 'lifestyle'];
+    const categories = ['sport', 'business','politics', 'technology', 'science', 'culture', 'lifestyle'];
     const { selectedCountry, onCountryChange } = this.props;
 
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
-            <NavLink className="nvbr navbar-brand mx-3" to="/">NM</NavLink>
+            <NavLink className="nvbr navbar-brand mx-3" to="/">NR</NavLink>
             <button
               className="navbar-toggler"
               type="button"

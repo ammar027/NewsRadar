@@ -1,11 +1,16 @@
 import React from "react";
 
-const NewsItem = ({ title, description, imageUrl, newsUrl }) => {
+const NewsItem = ({ title, description, imageUrl, newsUrl, author, date }) => {
   return (
-    <div >
+    <div>
       <img src={imageUrl} alt="News" />
       <h2 className="newsitm">{title}...</h2>
       <p>{description}...</p>
+      <p className="card-text">
+        <small className="text-body-secondary">
+          By {author ? author : "Unknown"} on {new Date(date).toGMTString()}
+        </small>
+      </p>
       <a className="btn btn-sm btn-dark" href={newsUrl} target="_blank" rel="noopener noreferrer">
         Read more
       </a>

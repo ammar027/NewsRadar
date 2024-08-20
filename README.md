@@ -1,10 +1,10 @@
-# NewsMonkey
+# NewsRadar
 
-Welcome to NewsMonkey, your one-stop destination for the latest news across the globe. This React-based web application provides up-to-date news and real-time stock information.
+Welcome to NewsRadar, your one-stop destination for the latest news across the globe. This React-based web application provides up-to-date news and real-time stock information.
 
 ## Live Demo
 
-Check out the live demo of NewsMonkey [here](https://ammars-newsmonkey.vercel.app).
+Check out the live demo of NewsRadar [here](https://ammars-newsradar.vercel.app).
 
 ## Features
 

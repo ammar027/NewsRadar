@@ -28,6 +28,7 @@ class App extends Component {
         <Routes>
           <Route path="/" element={<Home selectedCountry={selectedCountry} />} />
           <Route path="/technology" element={<News pageSize={18} country={selectedCountry} category="technology" />} />
+          <Route path="/politics" element={<News pageSize={18} country={selectedCountry} category="politics" />} />
           <Route path="/business" element={<News pageSize={18} country={selectedCountry} category="business" />} />
           <Route path="/science" element={<News pageSize={18} country={selectedCountry} category="science" />} />
           <Route path="/sport" element={<News pageSize={18} country={selectedCountry} category="sport" />} />

@@ -58,7 +58,7 @@ export class Home extends Component {
         <div className="hero-section">
           <div className="current-info-container">
             <div>
-              <h1 className="home-title">NewsMonkey</h1>
+              <h1 className="home-title">NewsRadar</h1>
               <p className="home-subtitle">
                 Your one-stop destination for the latest news across the globe
               </p>

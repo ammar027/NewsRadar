@@ -29,7 +29,7 @@ class News extends Component {
     this.setState({ loading: true });
 
     try {
-      let url = `https://content.guardianapis.com/search?q=${encodeURIComponent(country)}&section=${encodeURIComponent(category || 'technology')}&api-key=fc1bcc18-1f19-47e4-84ff-1aa40910d98b&page=${page}&page-size=${pageSize}&show-fields=thumbnail,trailText`;
+      let url = `https://content.guardianapis.com/search?q=${encodeURIComponent(country)}&section=${encodeURIComponent(category || 'technology')}&api-key=fc1bcc18-1f19-47e4-84ff-1aa40910d98b&page=${page}&page-size=${pageSize}&show-fields=thumbnail,trailText,byline,publication`;
       let response = await fetch(url);
       let parsedData = await response.json();
 
@@ -74,7 +74,7 @@ class News extends Component {
 
     return (
       <div className="container my-4">
-        <h2 className="text-center">NewsMonkey</h2>
+        <h2 className="text-center">NewsRadar</h2>
         <h3 className="text-center">{dynamicTitle}</h3>
 
         {loading && <Spinner />}
@@ -87,6 +87,8 @@ class News extends Component {
                   description={element.fields.trailText ? element.fields.trailText.slice(0, 68) : ""}
                   imageUrl={element.fields.thumbnail || "https://via.placeholder.com/150"}
                   newsUrl={element.webUrl}
+                  author={element.fields.byline}
+                  date={element.webPublicationDate}
                 />
               </div>
             ))}

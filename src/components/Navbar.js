@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export class Navbar extends Component {
   render() {
-    const categories = ['sport', 'business','politics', 'technology', 'science', 'culture', 'lifestyle'];
+    const categories = ['sport', 'business', 'politics', 'technology', 'science', 'culture', 'lifestyle'];
     const { selectedCountry, onCountryChange } = this.props;
 
     return (
@@ -25,21 +25,30 @@ export class Navbar extends Component {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <NavLink className="nav-link" exact to="/">Home</NavLink>
+                  <NavLink
+                    className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
+                    to="/"
+                  >
+                    Home
+                  </NavLink>
                 </li>
                 {categories.map(category => (
                   <li className="nav-item" key={category}>
                     <NavLink
-                      className="nav-link"
+                      className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
                       to={`/${category}`}
-                      activeClassName="active"
                     >
                       {category.charAt(0).toUpperCase() + category.slice(1)}
                     </NavLink>
                   </li>
                 ))}
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/about">About</NavLink>
+                  <NavLink
+                    className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
+                    to="/about"
+                  >
+                    About
+                  </NavLink>
                 </li>
               </ul>
               <select

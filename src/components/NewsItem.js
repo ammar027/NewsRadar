@@ -7,7 +7,7 @@ const NewsItem = ({ title, description, imageUrl, newsUrl, author, date }) => {
       <h2 className="newsitm">{title}...</h2>
       <p>{description}...</p>
       <p className="card-text">
-        <small className="text-body-secondary">
+        <small className="">
           By {author ? author : "Unknown"} on {new Date(date).toGMTString()}
         </small>
       </p>

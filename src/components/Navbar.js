@@ -2,13 +2,26 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
 export class Navbar extends Component {
+  state = {
+    darkMode: false,
+  };
+
+  toggleDarkMode = () => {
+    this.setState(prevState => {
+      const newMode = !prevState.darkMode;
+      document.body.classList.toggle('dark-mode', newMode);
+      return { darkMode: newMode };
+    });
+  };
+
   render() {
     const categories = ['sport', 'business', 'politics', 'technology', 'science', 'culture', 'lifestyle'];
     const { selectedCountry, onCountryChange } = this.props;
+    const { darkMode } = this.state;
 
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className={`navbar navbar-expand-lg ${darkMode ? 'navbar-dark bg-dark' : 'navbar-light bg-light'}`}>
           <div className="container-fluid">
             <NavLink className="nvbr navbar-brand mx-3" to="/">NR</NavLink>
             <button
@@ -51,6 +64,18 @@ export class Navbar extends Component {
                   </NavLink>
                 </li>
               </ul>
+              <div className="form-check form-switch ms-auto">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id="darkModeToggle"
+                  checked={darkMode}
+                  onChange={this.toggleDarkMode}
+                />
+                <label className="form-check-label" htmlFor="darkModeToggle">
+                  {darkMode ? "Light Mode" : "Dark Mode"}
+                </label>
+              </div>
               <select
                 className="form-select bg-light text-black border-0 ms-auto"
                 onChange={(e) => onCountryChange(e.target.value)}

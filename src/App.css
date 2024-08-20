@@ -319,6 +319,11 @@ body.dark-mode .nav-link.active {
   color: #ffffff;
 }
 
+body.dark-mode .nav-link:hover {
+  color: #7d7d7d;
+}
+
+
 body.dark-mode .news-item {
   background-color: #1a1a1a; /* Darker background for contrast */
   border: 1px solid #444;
@@ -350,4 +355,19 @@ body.dark-mode .home-subtitle {
 
 body.dark-mode .news-item .card-text small {
   color: #6d6d6d; /* or any other color that contrasts well with the dark background */
+}
+
+
+.form-select.bg-dark {
+  background-color: #343a40;
+  color: #e0e0e0;
+}
+
+.form-select.bg-light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.form-switch {
+  padding-left: 0em;
 }

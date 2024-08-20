@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+
 
 export class Navbar extends Component {
   state = {
@@ -64,20 +67,9 @@ export class Navbar extends Component {
                   </NavLink>
                 </li>
               </ul>
-              <div className="form-check form-switch ms-auto">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="darkModeToggle"
-                  checked={darkMode}
-                  onChange={this.toggleDarkMode}
-                />
-                <label className="form-check-label" htmlFor="darkModeToggle">
-                  {darkMode ? "Light Mode" : "Dark Mode"}
-                </label>
-              </div>
+
               <select
-                className="form-select bg-light text-black border-0 ms-auto"
+                className={`form-select ${darkMode ? 'bg-dark text-white' : 'bg-light text-black'} border-0 ms-auto`}
                 onChange={(e) => onCountryChange(e.target.value)}
                 value={selectedCountry}
                 style={{ width: "180px" }}
@@ -89,6 +81,20 @@ export class Navbar extends Component {
                 <option value="Canada">Canada</option>
                 <option value="Africa">Africa</option>
               </select>
+              <div className="form-check form-switch  d-flex align-items-center">
+                <input
+                  className="form-check-input mx-2"
+                  type="checkbox"
+                  id="darkModeToggle"
+                  checked={darkMode}
+                  onChange={this.toggleDarkMode}
+                />
+                {/* <label className="form-check-label" htmlFor="darkModeToggle">
+                  {darkMode ? "Light Mode" : "Dark Mode"}
+                </label> */}
+                <FontAwesomeIcon icon={darkMode ? faMoon : faSun}  />
+
+              </div>
             </div>
           </div>
         </nav>

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link as ScrollLink, Element } from "react-scroll";
 import News from "./News";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 export class Home extends Component {
   constructor(props) {
@@ -9,6 +11,7 @@ export class Home extends Component {
       currentTime: new Date().toLocaleTimeString(),
       stockInfo: null,
       stockChangePositive: true,
+      searchQuery: "",
     };
   }
 
@@ -51,8 +54,17 @@ export class Home extends Component {
     clearInterval(this.timeInterval);
   }
 
+  handleSearchChange = (e) => {
+    this.setState({ searchQuery: e.target.value });
+  };
+
+  handleSearchSubmit = (e) => {
+    e.preventDefault();
+    // Additional logic for search can be added here
+  };
+
   render() {
-    const { currentTime, stockInfo, stockChangePositive } = this.state;
+    const { currentTime, stockInfo, stockChangePositive, searchQuery } = this.state;
     const { selectedCountry } = this.props;
 
     // List of countries to exclude from showing in the title
@@ -98,11 +110,26 @@ export class Home extends Component {
         </div>
 
         <Element name="highlights" className="categories-section">
+          {/* Search Bar */}
+          <form onSubmit={this.handleSearchSubmit} className="search-bar-container">
+            <div className="search-input-wrapper">
+              <FontAwesomeIcon icon={faSearch} className="search-icon" />
+              <input
+                type="text"
+                placeholder="Search news..."
+                value={searchQuery}
+                onChange={this.handleSearchChange}
+                className="search-input"
+              />
+            </div>
+          </form>
+
           <div className="categories-grid">
             <News
               pageSize={12}
               country={this.props.selectedCountry}
               category="world"
+              searchQuery={searchQuery} // Pass the search query to News component
               titlePrefix={titlePrefix} // Pass the title prefix to News component
             />
           </div>

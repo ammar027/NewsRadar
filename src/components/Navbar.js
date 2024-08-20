@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom'; // useNavigate for redirection
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faSun, faMoon} from '@fortawesome/free-solid-svg-icons';
 
 export class Navbar extends Component {
   constructor(props) {
@@ -34,8 +34,17 @@ export class Navbar extends Component {
     });
   };
 
+  handleSearchClick = () => {
+    const { navigate } = this.props;
+    if (navigate) {
+      navigate('/'); // Redirect to home page
+      // Optionally, you can also use `window.location` to scroll to the search bar
+      window.location.hash = 'search'; // Assuming your search bar has an ID of 'search'
+    }
+  };
+
   render() {
-    const categories = ['sport', 'business', 'politics', 'technology', 'science', 'culture', 'lifestyle','music'];
+    const categories = ['sport', 'business', 'politics', 'technology', 'science', 'culture', 'lifestyle', 'music'];
     const { selectedCountry, onCountryChange } = this.props;
     const { darkMode } = this.state;
 
@@ -43,7 +52,7 @@ export class Navbar extends Component {
       <div>
         <nav className={`navbar navbar-expand-lg ${darkMode ? 'navbar-dark bg-dark' : 'navbar-light bg-light'}`}>
           <div className="container-fluid">
-            <NavLink className="nvbr navbar-brand mx-2" to="/">NR</NavLink>
+            <NavLink className="navbar-brand mx-2" to="/">NR</NavLink>
             <button
               className="navbar-toggler"
               type="button"
@@ -98,7 +107,7 @@ export class Navbar extends Component {
                 <option value="Canada">Canada</option>
                 <option value="Africa">Africa</option>
               </select>
-              <div className="form-check form-switch  d-flex align-items-center">
+              <div className="form-check form-switch d-flex align-items-center">
                 <input
                   className="form-check-input mx-2"
                   type="checkbox"
@@ -108,6 +117,7 @@ export class Navbar extends Component {
                 />
                 <FontAwesomeIcon icon={darkMode ? faMoon : faSun} />
               </div>
+
             </div>
           </div>
         </nav>
@@ -116,4 +126,10 @@ export class Navbar extends Component {
   }
 }
 
-export default Navbar;
+// Wrap Navbar with useNavigate
+const NavbarWithNavigate = (props) => {
+  const navigate = useNavigate();
+  return <Navbar {...props} navigate={navigate} />;
+};
+
+export default NavbarWithNavigate;

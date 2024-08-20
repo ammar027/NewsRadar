@@ -297,6 +297,12 @@ button:disabled {
     text-align: left;
   }
 
+  .search-bar-container {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
 }
 
 
@@ -392,3 +398,116 @@ body.dark-mode .about-title {
 body.dark-mode .about-description {
   color: #e6e6e6; /* Lighten text color */
 }
+
+
+/* pagination */
+
+/* Container for pagination buttons and page number */
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+/* Pagination buttons */
+.pagination-button {
+  background-color: #000000;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.pagination-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: #a3a3a4;
+}
+
+/* Page number display */
+.page-number {
+  font-size: 16px;
+  font-weight: bold;
+  color: #444444;
+  margin: 0 15px;
+}
+
+.page-number span {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+/* Optional: Adjust button appearance */
+.page-button {
+  display: flex;
+  align-items: center;
+}
+
+.page-button span {
+  margin: 0 10px;
+  
+}
+
+/* searchbar */
+
+/* Search Bar */
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.search-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 20px 10px 40px; /* Adjust padding to accommodate the icon */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box; /* Ensure padding and border are inside the width */
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 16px; /* Ensure the icon size matches the text size */
+  pointer-events: none; /* Prevent the icon from blocking clicks on the input */
+}
+
+.search-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Dark mode support */
+body.dark-mode .search-input {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+body.dark-mode .search-icon {
+  color: #bbb;
+}
+
+body.dark-mode .search-input:focus {
+  border-color: #0069d9;
+  box-shadow: 0 0 5px rgba(0, 105, 217, 0.5);
+}
+

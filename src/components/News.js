@@ -18,20 +18,28 @@ class News extends Component {
   }
 
   async componentDidUpdate(prevProps) {
-    if (prevProps.category !== this.props.category || prevProps.country !== this.props.country) {
+    if (
+      prevProps.category !== this.props.category ||
+      prevProps.country !== this.props.country ||
+      prevProps.searchQuery !== this.props.searchQuery // Update when search query changes
+    ) {
       this.setState({ page: 1 }, () => this.updateNews());
     }
   }
 
   async updateNews() {
     const { page } = this.state;
-    const { pageSize, category, country } = this.props;
+    const { pageSize, category, country, searchQuery } = this.props;
     this.setState({ loading: true });
-
+// backup : 933a77c8-4589-4f5f-a553-bd20dc6015a5
     try {
-      const apiKey = "fc1bcc18-1f19-47e4-84ff-1aa40910d98b"; // Guardian API Key
-      let url = `https://content.guardianapis.com/search?order-by=newest&q=${encodeURIComponent(country)}&section=${encodeURIComponent(category || 'technology')}&api-key=${apiKey}&page=${page}&page-size=${pageSize}&show-fields=thumbnail,trailText,byline,publication,webTitle,webUrl,webPublicationDate`;
-      
+      const apiKey = "933a77c8-4589-4f5f-a553-bd20dc6015a5"; // Guardian API Key
+      let url = `https://content.guardianapis.com/search?order-by=newest&q=${encodeURIComponent(
+        searchQuery || country
+      )}&section=${encodeURIComponent(
+        category || 'world'
+      )}&api-key=${apiKey}&page=${page}&page-size=${pageSize}&show-fields=thumbnail,trailText,byline,publication,webTitle,webUrl,webPublicationDate`;
+
       let response = await fetch(url);
       let parsedData = await response.json();
 
@@ -41,7 +49,7 @@ class News extends Component {
         totalResults: parsedData.response.total,
       });
     } catch (error) {
-      console.error("Error fetching news:", error);
+      console.error('Error fetching news:', error);
       this.setState({ loading: false });
     }
   }
@@ -73,7 +81,6 @@ class News extends Component {
     // Determine the title based on the selected category
     const categoryTitle = category.charAt(0).toUpperCase() + category.slice(1);
     const dynamicTitle = `Latest ${categoryTitle} Headlines`;
-    
 
     return (
       <div className="container my-4">
@@ -86,25 +93,28 @@ class News extends Component {
             articles.map((element) => (
               <div className="col-md-4 news-item" key={element.id}>
                 <NewsItem
-                  title={element.webTitle ? element.webTitle.slice(0, 50) : ""}
-                  description={element.fields.trailText ? element.fields.trailText.slice(0, 68) : ""}
-                  imageUrl={element.fields.thumbnail || "https://via.placeholder.com/150"}
+                  title={element.webTitle ? element.webTitle.slice(0, 50) : ''}
+                  description={element.fields.trailText ? element.fields.trailText.slice(0, 68) : ''}
+                  imageUrl={element.fields.thumbnail || 'https://via.placeholder.com/150'}
                   newsUrl={element.webUrl}
-                  author={element.fields.byline || "Unknown"}
-                  date={element.webPublicationDate || "N/A"}
+                  author={element.fields.byline || 'Unknown'}
+                  date={element.webPublicationDate || 'N/A'}
                 />
               </div>
             ))}
         </div>
-        <div className="container d-flex justify-content-center my-5">
+        <div className="pagination-container">
           <button
+            className="pagination-button"
             disabled={page <= 1}
             type="button"
             onClick={this.handlePrevClick}
           >
             &larr; Previous
           </button>
+          <span className="page-number">{`Page ${page} of ${totalPages}`}</span>
           <button
+            className="pagination-button"
             disabled={page >= totalPages}
             type="button"
             onClick={this.handleNextClick}

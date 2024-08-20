@@ -252,20 +252,19 @@ button:disabled {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  text-align: right;
 }
 
 .current-info {
   font-family: 'Open Sans', serif;
   font-size: 1em;
   color: #000;
-  text-align: right;
 }
 
 .stock-info {
   font-family: 'Open Sans', serif;
   font-size: 1em;
   color: #000;
-  text-align: right;
 }
 
 .stock-info h3 {
@@ -293,9 +292,11 @@ button:disabled {
     align-items: flex-start;
   }
 
-  .stock-info {
+  .current-info-container {
+
     text-align: left;
   }
+
 }
 
 
@@ -370,4 +371,19 @@ body.dark-mode .news-item .card-text small {
 
 .form-switch {
   padding-left: 0em;
+}
+
+body.dark-mode .about-container {
+  background-color: #1a1a1a; /* Darker background for contrast */
+  border: 1px solid #444; /* Border color for better contrast */
+  color: #f0f0f0; /* Lighten text color */
+}
+
+body.dark-mode .about-title {
+  color: #ffffff; /* White for headings to stand out */
+  font-weight: 700; /* Increase font weight for better readability */
+}
+
+body.dark-mode .about-description {
+  color: #e6e6e6; /* Lighten text color */
 }

@@ -92,7 +92,7 @@ export class Home extends Component {
         </div>
 
         <Element name="highlights" className="categories-section">
-          <h2 className="categories-title">Latest Country Highlights</h2>
+          <h2 className="categories-title">Latest Highlights</h2>
           <div className="categories-grid">
             <News
               pageSize={6}

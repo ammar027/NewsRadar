@@ -3,16 +3,33 @@ import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
-
 export class Navbar extends Component {
-  state = {
-    darkMode: false,
-  };
+  constructor(props) {
+    super(props);
+
+    // Initialize darkMode from localStorage
+    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+
+    this.state = {
+      darkMode: savedDarkMode,
+    };
+  }
+
+  componentDidMount() {
+    // Apply dark mode class on initial render
+    if (this.state.darkMode) {
+      document.body.classList.add('dark-mode');
+    }
+  }
 
   toggleDarkMode = () => {
     this.setState(prevState => {
       const newMode = !prevState.darkMode;
       document.body.classList.toggle('dark-mode', newMode);
+
+      // Save to localStorage
+      localStorage.setItem('darkMode', newMode);
+
       return { darkMode: newMode };
     });
   };
@@ -26,7 +43,7 @@ export class Navbar extends Component {
       <div>
         <nav className={`navbar navbar-expand-lg ${darkMode ? 'navbar-dark bg-dark' : 'navbar-light bg-light'}`}>
           <div className="container-fluid">
-            <NavLink className="nvbr navbar-brand mx-3" to="/">NR</NavLink>
+            <NavLink className="nvbr navbar-brand mx-2" to="/">NR</NavLink>
             <button
               className="navbar-toggler"
               type="button"
@@ -89,11 +106,7 @@ export class Navbar extends Component {
                   checked={darkMode}
                   onChange={this.toggleDarkMode}
                 />
-                {/* <label className="form-check-label" htmlFor="darkModeToggle">
-                  {darkMode ? "Light Mode" : "Dark Mode"}
-                </label> */}
-                <FontAwesomeIcon icon={darkMode ? faMoon : faSun}  />
-
+                <FontAwesomeIcon icon={darkMode ? faMoon : faSun} />
               </div>
             </div>
           </div>

@@ -311,10 +311,15 @@ body.dark-mode .navbar {
   border-bottom: 1px solid #444;
 }
 
-body.dark-mode .navbar-brand,
-body.dark-mode .nav-link {
+body.dark-mode .navbar-brand {
   color: #f0f0f0; /* Lighter text color */
 }
+
+body.dark-mode .nav-link {
+  color: #b5b5b5; /* Lighter text color */
+}
+
+
 
 body.dark-mode .nav-link.active {
   color: #ffffff;

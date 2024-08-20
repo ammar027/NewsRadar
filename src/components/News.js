@@ -29,7 +29,9 @@ class News extends Component {
     this.setState({ loading: true });
 
     try {
-      let url = `https://content.guardianapis.com/search?q=${encodeURIComponent(country)}&section=${encodeURIComponent(category || 'technology')}&api-key=fc1bcc18-1f19-47e4-84ff-1aa40910d98b&page=${page}&page-size=${pageSize}&show-fields=thumbnail,trailText,byline,publication`;
+      const apiKey = "fc1bcc18-1f19-47e4-84ff-1aa40910d98b"; // Guardian API Key
+      let url = `https://content.guardianapis.com/search?order-by=newest&q=${encodeURIComponent(country)}&section=${encodeURIComponent(category || 'technology')}&api-key=${apiKey}&page=${page}&page-size=${pageSize}&show-fields=thumbnail,trailText,byline,publication,webTitle,webUrl,webPublicationDate`;
+      
       let response = await fetch(url);
       let parsedData = await response.json();
 
@@ -70,11 +72,12 @@ class News extends Component {
 
     // Determine the title based on the selected category
     const categoryTitle = category.charAt(0).toUpperCase() + category.slice(1);
-    const dynamicTitle = `Top ${categoryTitle} Headlines`;
+    const dynamicTitle = `Latest ${categoryTitle} Headlines`;
+    
 
     return (
       <div className="container my-4">
-        <h2 className="text-center">NewsRadar</h2>
+        <h2 className="text-center">NR</h2>
         <h3 className="text-center">{dynamicTitle}</h3>
 
         {loading && <Spinner />}
@@ -87,8 +90,8 @@ class News extends Component {
                   description={element.fields.trailText ? element.fields.trailText.slice(0, 68) : ""}
                   imageUrl={element.fields.thumbnail || "https://via.placeholder.com/150"}
                   newsUrl={element.webUrl}
-                  author={element.fields.byline}
-                  date={element.webPublicationDate}
+                  author={element.fields.byline || "Unknown"}
+                  date={element.webPublicationDate || "N/A"}
                 />
               </div>
             ))}

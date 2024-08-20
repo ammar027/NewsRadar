@@ -34,6 +34,7 @@ class App extends Component {
           <Route path="/sport" element={<News pageSize={18} country={selectedCountry} category="sport" />} />
           <Route path="/culture" element={<News pageSize={18} country={selectedCountry} category="culture" />} />
           <Route path="/lifestyle" element={<News pageSize={18} country={selectedCountry} category="lifeandstyle" />} />
+          <Route path="/music" element={<News pageSize={18} country={selectedCountry} category="music" />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </Router>

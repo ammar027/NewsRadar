@@ -53,11 +53,17 @@ export class Home extends Component {
 
   render() {
     const { currentTime, stockInfo, stockChangePositive } = this.state;
+    const { selectedCountry } = this.props;
+
+    // List of countries to exclude from showing in the title
+    const excludedCountries = ["India", "US", "UK", "Australia", "Canada", "Africa"];
+    const titlePrefix = excludedCountries.includes(selectedCountry) ? "" : `${selectedCountry} `;
+
     return (
       <div className="home-container">
         <div className="hero-section">
           <div className="current-info-container">
-            <div className="hero"> 
+            <div className="hero">
               <h1 className="home-title">NewsRadar</h1>
               <p className="home-subtitle">
                 Your one-stop destination for the latest news across the globe
@@ -92,12 +98,12 @@ export class Home extends Component {
         </div>
 
         <Element name="highlights" className="categories-section">
-          <h2 className="categories-title">Latest Highlights</h2>
           <div className="categories-grid">
             <News
-              pageSize={6}
+              pageSize={12}
               country={this.props.selectedCountry}
               category="world"
+              titlePrefix={titlePrefix} // Pass the title prefix to News component
             />
           </div>
         </Element>

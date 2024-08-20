@@ -35,7 +35,7 @@ export class Navbar extends Component {
   };
 
   render() {
-    const categories = ['sport', 'business', 'politics', 'technology', 'science', 'culture', 'lifestyle'];
+    const categories = ['sport', 'business', 'politics', 'technology', 'science', 'culture', 'lifestyle','music'];
     const { selectedCountry, onCountryChange } = this.props;
     const { darkMode } = this.state;
 

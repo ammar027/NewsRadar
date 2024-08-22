@@ -4,7 +4,7 @@ const NewsItem = ({ title, description, imageUrl, newsUrl, author, date }) => {
   return (
     <div>
       <img src={imageUrl} alt="News" />
-      <h2 className="newsitm">{title}...</h2>
+      <h2 className="newsitm">{title}..</h2>
       <p>{description}...</p>
       <p className="card-text">
         <small className="">

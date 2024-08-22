@@ -126,7 +126,7 @@ export class Home extends Component {
 
           <div className="categories-grid">
             <News
-              pageSize={12}
+              pageSize={18}
               country={this.props.selectedCountry}
               category="world"
               searchQuery={searchQuery} // Pass the search query to News component

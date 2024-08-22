@@ -93,8 +93,8 @@ class News extends Component {
             articles.map((element) => (
               <div className="col-md-4 news-item" key={element.id}>
                 <NewsItem
-                  title={element.webTitle ? element.webTitle.slice(0, 50) : ''}
-                  description={element.fields.trailText ? element.fields.trailText.slice(0, 68) : ''}
+                  title={element.webTitle ? element.webTitle.slice(0, 89) : ''}
+                  description={element.fields.trailText ? element.fields.trailText.slice(0, 128) : ''}
                   imageUrl={element.fields.thumbnail || 'https://via.placeholder.com/150'}
                   newsUrl={element.webUrl}
                   author={element.fields.byline || 'Unknown'}

@@ -16,6 +16,7 @@
     "react-router-dom": "^6.26.1",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.9.0",
+    "react-top-loading-bar": "^2.3.1",
     "web-vitals": "^2.1.4",
     "webpack": "^5.94.0"
   },
@@ -25,7 +26,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  
   "eslintConfig": {
     "extends": [
       "react-app",

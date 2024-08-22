@@ -18,6 +18,9 @@ export class Home extends Component {
   componentDidMount() {
     this.updateTime();
     this.fetchStockInfo();
+    if (this.props.setProgress) {
+      this.props.setProgress(100); // Update progress to 100% when Home page loads
+    }
   }
 
   updateTime() {
@@ -65,7 +68,7 @@ export class Home extends Component {
 
   render() {
     const { currentTime, stockInfo, stockChangePositive, searchQuery } = this.state;
-    const { selectedCountry } = this.props;
+    const { selectedCountry, setProgress } = this.props;
 
     // List of countries to exclude from showing in the title
     const excludedCountries = ["India", "US", "UK", "Australia", "Canada", "Africa"];
@@ -126,11 +129,12 @@ export class Home extends Component {
 
           <div className="categories-grid">
             <News
+              setProgress={setProgress}
               pageSize={18}
-              country={this.props.selectedCountry}
+              country={selectedCountry}
               category="world"
-              searchQuery={searchQuery} // Pass the search query to News component
-              titlePrefix={titlePrefix} // Pass the title prefix to News component
+              searchQuery={searchQuery}
+              titlePrefix={titlePrefix}
             />
           </div>
         </Element>

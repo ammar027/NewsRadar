@@ -1,6 +1,3 @@
-Here is the updated `README.md` file in markdown format:
-
-```markdown
 # NewsRadar
 
 Welcome to NewsRadar, your one-stop destination for the latest news across the globe. This React-based web application provides up-to-date news and real-time stock information.
@@ -104,6 +101,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [FontAwesome](https://fontawesome.com/)
 - [The Guardian API](https://open-platform.theguardian.com/)
 - [Finnhub API](https://finnhub.io/)
-```
-
-You can copy and paste this into your `README.md` file. If you have any more updates or need further modifications, let me know!

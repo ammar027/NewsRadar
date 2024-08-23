@@ -511,6 +511,13 @@ body.dark-mode .search-input:focus {
   box-shadow: 0 0 5px rgba(0, 105, 217, 0.5);
 }
 
+/* navbar sticky */
+
+.navbar-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensures the navbar stays on top of other content */
+}
 
 
 

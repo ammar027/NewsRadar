@@ -47,7 +47,7 @@ class News extends Component {
     this.setState({ loading: true });
   
     try {
-      const apiKey = "933a77c8-4589-4f5f-a553-bd20dc6015a5"; // Guardian API Key
+      const apiKey = process.env.REACT_APP_GUARDIAN_API_KEY; // Use the environment variable
       let url = `https://content.guardianapis.com/search?order-by=newest&q=${encodeURIComponent(
         searchQuery || country
       )}&section=${encodeURIComponent(

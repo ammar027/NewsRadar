@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open Sans:wght@400;700&display=swap');
 @import url('https://fonts.cdnfonts.com/css/times-new-roman');
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
 
 body {
   font-family: 'Open Sans', serif;
@@ -28,7 +30,33 @@ h2.newsitm {
   font-size: 1em;
   text-align: left;
   color: #333;
+
+
 }
+
+.navbar-brand {
+  font-family: 'Open Sans', serif;
+  font-weight: 700;
+  font-size: 1.5em;
+  color: #000;
+}
+
+.navbar-nav .nav-link {
+  font-family: 'Open Sans', serif;
+  font-weight: 400;
+  font-size: 1em;
+  color: #555;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #000;
+}
+
+.drkbutton {
+  color: #000;
+}
+
+
 
 h3 {
   font-family: 'Open Sans', serif;
@@ -81,20 +109,16 @@ button:disabled {
 }
 
 .form-select {
-  background-color: #343a40;
-  color: #fff;
-  border: 1px solid #495057;
-  text-align: end;
+  background-color: #d4d4d411;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+  border-radius: 2rem; /* Rounded corners */
 }
 
-.form-select:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
-}
 
-.btn {
+
+/* .btn {
   border-radius: 0%;
-}
+} */
 
 .about-container {
   max-width: 800px;
@@ -125,7 +149,7 @@ button:disabled {
 }
 
 .home-container {
-  padding: 20px;
+  padding: 15px;
 }
 
 .hero-section {
@@ -168,9 +192,7 @@ button:disabled {
   background-color: #333;
 }
 
-.categories-section {
-
-}
+.categories-section {}
 
 .categories-title {
   font-family: 'Open Sans', sans-serif;
@@ -181,14 +203,11 @@ button:disabled {
 }
 
 .categories-grid {
-  /* display: flex;
+  width: 100%;
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px; */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .news-item {
@@ -222,11 +241,38 @@ button:disabled {
   cursor: not-allowed;
 }
 
+
+/* Navbar base styles */
 .navbar {
-  background-color: #fff;
-  border-bottom: 1px solid #e5e5e5;
-  padding: 10px 20px;
+  /* background-color: rgba(255, 255, 255, 0.568); Semi-transparent background for light mode */
+  background-color: #ffffffa3;
+  backdrop-filter: blur(15px);
+  /* Blur effect */
+  -webkit-backdrop-filter: blur(25px);
+  /* Safari support */
+  border-bottom: 1px solid rgba(199, 198, 198, 0.321);
+  /* Light border for separation */
+  z-index: 999;
+  /* Ensure navbar is above other elements */
 }
+
+/* Dark mode navbar */
+body.dark-mode .navbar {
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent background for dark mode */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  /* Light border for separation */
+}
+
+/* Additional padding for content to prevent overlap */
+.navbar+.container-fluid {
+  padding-top: 60px;
+  /* Adjust this value if necessary */
+}
+
+
+
+
 
 .navbar-brand {
   font-family: 'Open Sans', serif;
@@ -299,7 +345,7 @@ button:disabled {
 
   .search-bar-container {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     text-align: left;
   }
 
@@ -309,20 +355,21 @@ button:disabled {
 
 body.dark-mode {
   background-color: #000000;
-  color: #e0e0e0; /* Lighten the text color */
+  color: #e0e0e0;
+  /* Lighten the text color */
 }
 
-body.dark-mode .navbar {
-  background-color: #1a1a1a; /* Slightly darker for better contrast */
-  border-bottom: 1px solid #444;
-}
+
+
 
 body.dark-mode .navbar-brand {
-  color: #f0f0f0; /* Lighter text color */
+  color: #f0f0f0;
+  /* Lighter text color */
 }
 
 body.dark-mode .nav-link {
-  color: #b5b5b5; /* Lighter text color */
+  color: #b5b5b5;
+  /* Lighter text color */
 }
 
 
@@ -337,36 +384,47 @@ body.dark-mode .nav-link:hover {
 
 
 body.dark-mode .news-item {
-  background-color: #1a1a1a; /* Darker background for contrast */
+  background-color: #1a1a1a;
+  /* Darker background for contrast */
   border: 1px solid #444;
-  color: #f0f0f0; /* Lighten text color */
+  color: #f0f0f0;
+  /* Lighten text color */
 }
 
 body.dark-mode .form-select {
-  background-color: #2c2c2c; /* Slightly lighter than the navbar */
-  color: #f0f0f0; /* Lighten text */
-  border: 1px solid #555;
+  background-color: #2c2c2cae;
+  /* Slightly lighter than the navbar */
+  color: #f0f0f0;
+  /* Lighten text */
 }
 
 body.dark-mode button {
-  background-color: #444; /* Lighter button background */
+  background-color: #444;
+  /* Lighter button background */
   border: 1px solid #555;
 }
 
 body.dark-mode h2,
 
-body.dark-mode .news-item h2{
-  color: #ffffff; /* White for headings to stand out */
-  font-weight: 700; /* Increase font weight for better readability */
+body.dark-mode .news-item h2 {
+  color: #ffffff;
+  /* White for headings to stand out */
+  font-weight: 700;
+  /* Increase font weight for better readability */
 }
 
-body.dark-mode h3,body.dark-mode .stock-info h3 ,body.dark-mode .home-title,body.dark-mode p,
+body.dark-mode h3,
+body.dark-mode .stock-info h3,
+body.dark-mode .home-title,
+body.dark-mode p,
 body.dark-mode .home-subtitle {
-  color: #e6e6e6; /* Lighten text */
+  color: #e6e6e6;
+  /* Lighten text */
 }
 
 body.dark-mode .news-item .card-text small {
-  color: #6d6d6d; /* or any other color that contrasts well with the dark background */
+  color: #6d6d6d;
+  /* or any other color that contrasts well with the dark background */
 }
 
 
@@ -385,118 +443,65 @@ body.dark-mode .news-item .card-text small {
 }
 
 body.dark-mode .about-container {
-  background-color: #1a1a1a; /* Darker background for contrast */
-  border: 1px solid #444; /* Border color for better contrast */
-  color: #f0f0f0; /* Lighten text color */
+  background-color: #1a1a1a;
+  /* Darker background for contrast */
+  border: 1px solid #444;
+  /* Border color for better contrast */
+  color: #f0f0f0;
+  /* Lighten text color */
 }
 
 body.dark-mode .about-title {
-  color: #ffffff; /* White for headings to stand out */
-  font-weight: 700; /* Increase font weight for better readability */
+  color: #ffffff;
+  /* White for headings to stand out */
+  font-weight: 700;
+  /* Increase font weight for better readability */
 }
 
 body.dark-mode .about-description {
-  color: #e6e6e6; /* Lighten text color */
+  color: #e6e6e6;
+  /* Lighten text color */
 }
 
 
-/* pagination */
 
-/* Container for pagination buttons and page number */
-.pagination-container {
+
+
+
+/* Search bar container styling */
+.search-bar-container {
   display: flex;
-  align-items: center;
   justify-content: center;
   margin: 20px 0;
 }
 
-/* Pagination buttons */
-.pagination-button {
-  background-color: #000000;
-  border: none;
-  color: #fff;
-  padding: 10px 20px;
-  margin: 0 10px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-.pagination-button:disabled {
-  background-color: #6c757d;
-  cursor: not-allowed;
-}
-
-.pagination-button:hover:not(:disabled) {
-  background-color: #a3a3a4;
-}
-
-/* Page number display */
-.page-number {
-  font-size: 16px;
-  font-weight: bold;
-  color: #444444;
-  margin: 0 15px;
-}
-
-.page-number span {
-  font-size: 16px;
-  color: #ffffff;
-}
-
-/* Optional: Adjust button appearance */
-.page-button {
+.search-input-wrapper {
   display: flex;
   align-items: center;
-}
-
-.page-button span {
-  margin: 0 10px;
-  
-}
-
-/* searchbar */
-
-/* Search Bar */
-.search-bar-container {
-  display: flex;
-  justify-content: center;
-  margin: 20px auto;
-  max-width: 600px;
-}
-
-.search-input-wrapper {
-  position: relative;
-  width: 100%;
-}
-
-.search-input {
-  width: 100%;
-  padding: 10px 20px 10px 40px; /* Adjust padding to accommodate the icon */
   border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  box-sizing: border-box; /* Ensure padding and border are inside the width */
+  border-radius: 4px;
+  padding: 5px;
+  background-color: #ffffff;
 }
 
 .search-icon {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #888;
-  font-size: 16px; /* Ensure the icon size matches the text size */
-  pointer-events: none; /* Prevent the icon from blocking clicks on the input */
+  margin: 8px;
 }
 
-.search-input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+.search-input {
+  border: none;
+  outline: none;
+  padding: 5px;
+  width: 300px;
 }
 
 /* Dark mode support */
-body.dark-mode .search-input {
+body.dark-mode .search-input,
+.search-input-wrapper {
+  background-color: #33333300;
+}
+
+body.dark-mode .search-input-wrapper {
   background-color: #333;
   color: #fff;
   border: 1px solid #444;
@@ -516,8 +521,218 @@ body.dark-mode .search-input:focus {
 .navbar-sticky {
   position: sticky;
   top: 0;
-  z-index: 1000; /* Ensures the navbar stays on top of other content */
+  z-index: 1000;
+  /* Ensures the navbar stays on top of other content */
 }
 
+
+
+/* General frosted glass styling */
+.frosted-glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom light mode */
+.custom-light-mode {
+  background: rgba(255, 255, 255, 0.5);
+  color: black;
+}
+
+/* Custom dark mode */
+.custom-dark-mode {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+/* Select element styling */
+.custom-select-light-mode {
+  background: rgba(255, 255, 255, 0.25);
+  color: black;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-select-dark-mode {
+  background: rgba(0, 0, 0, 0.25);
+  color: white;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Navbar frosted glass effect */
+.navbar-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+
+/* Back to Top Button Styles */
+.back-to-top-btn {
+  display: none;
+  /* Initially hidden */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(197, 197, 197, 0.142);
+  /* Semi-transparent white background */
+  color: #000000;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  /* Adjust width */
+  height: 50px;
+  /* Adjust height */
+  font-size: 24px;
+  /* Adjust font-size */
+  font-family: 'Open Sans', serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(15px);
+  /* For Safari */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+  /* Ensure it stays above other content */
+  text-align: center;
+  display: flex;
+  /* Use flexbox to center content */
+  align-items: center;
+  /* Center vertically */
+  justify-content: center;
+  /* Center horizontally */
+}
+
+.back-to-top-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  /* Slightly more opaque on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.back-to-top-btn:focus {
+  outline: none;
+}
+
+
+
+/* Dark mode support */
+body.dark-mode .back-to-top-btn {
+  background: rgba(0, 0, 0, 0.25);
+  /* Darker background for dark mode */
+  color: #fff;
+  /* Light text color */
+}
+
+body.dark-mode .back-to-top-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  /* Slightly more opaque on hover in dark mode */
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+body.dark-mode .theme-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100px;
+  height: 40px;
+  background: #2c2c2cae;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+/* toggle */
+
+/* Theme toggle styles */
+.theme-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100px;
+  height: 40px;
+  background: #dddddd6f;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.theme-toggle input {
+  display: none;
+}
+
+.theme-toggle label {
+  flex: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #999;
+  transition: color 0.3s;
+}
+
+.theme-toggle input:checked + label {
+  color: #000;
+}
+
+.toggle-thumb {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 50%;
+  top: 5px;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.theme-toggle input#light:checked ~ .toggle-thumb {
+  transform: translateX(0);
+}
+
+.theme-toggle input#system:checked ~ .toggle-thumb {
+  transform: translateX(30px);
+}
+
+.theme-toggle input#dark:checked ~ .toggle-thumb {
+  transform: translateX(60px);
+}
+
+.theme-toggle label {
+  z-index: 2;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .navbar-toggler {
+    order: 2; /* Move the hamburger icon after the theme toggle */
+  }
+
+  .theme-toggle {
+    order: 1; /* Ensure the toggle is placed before the hamburger icon */
+    margin-right: 1rem; /* Add spacing on the right */
+  }
+
+  .navbar-collapse {
+    flex-grow: 1;
+    justify-content: flex-end; /* Align items to the right */
+  }
+
+  .navbar-toggler {
+    margin-left: auto; /* Push the toggle and hamburger to the right */
+  }
+}
 
 

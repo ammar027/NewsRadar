@@ -2,11 +2,13 @@ import React, { useState, useCallback, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Spinner from './Spinner';
 import NewsItem from "./NewsItem";
+import BackToTopButton from "./BackToTopButton";
 
 const News = ({ setProgress, pageSize, country, category, searchQuery }) => {
   const [articles, setArticles] = useState([]);
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   // Debounce fetchMoreData function
   const fetchMoreData = useCallback(async () => {
@@ -37,11 +39,26 @@ const News = ({ setProgress, pageSize, country, category, searchQuery }) => {
   
     if (setProgress) setProgress(100);
   }, [page, category, country, searchQuery, setProgress, pageSize]);
-  
 
   useEffect(() => {
     fetchMoreData(); // Fetch data when component mounts or dependencies change
   }, [fetchMoreData]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <div className="container my-4">
@@ -79,6 +96,9 @@ const News = ({ setProgress, pageSize, country, category, searchQuery }) => {
           ))}
         </div>
       </InfiniteScroll>
+
+      {/* Include the BackToTopButton component */}
+      {showBackToTop && <BackToTopButton />}
     </div>
   );
 }

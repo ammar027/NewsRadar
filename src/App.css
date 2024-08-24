@@ -736,3 +736,24 @@ body.dark-mode .theme-toggle {
 }
 
 
+/* Media query for mobile devices */
+@media (max-width: 1070px) {
+  .navbar-toggler {
+    order: 2; /* Move the hamburger icon after the theme toggle */
+  }
+
+  .theme-toggle {
+    order: 1; /* Ensure the toggle is placed before the hamburger icon */
+    margin-right: 1rem; /* Add spacing on the right */
+  }
+
+  .navbar-collapse {
+    flex-grow: 1;
+    justify-content: flex-end; /* Align items to the right */
+  }
+
+  .navbar-toggler {
+    margin-left: auto; /* Push the toggle and hamburger to the right */
+  }
+}
+

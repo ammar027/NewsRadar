@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon, faAdjust } from "@fortawesome/free-solid-svg-icons";
 
-
 const Navbar = ({ selectedCountry, onCountryChange }) => {
   const savedTheme = localStorage.getItem("theme") || "system";
   const [theme, setTheme] = useState(savedTheme);
